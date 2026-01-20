@@ -11,10 +11,10 @@ CC_FLAGS=-O0		\
 CC_DFLAG=-g
 
 # CÓDIGOS FONTE
-SRCS= main.c
+SRCS= main.c Personagem.c
 
 # OBJETOS GERADOS DOS CÓDIGOS FONTE
-OBJS= main.o 
+OBJS= main.o Personagem.o
 
 # LIGAÇÃO PARA raylib (adiciona (-L PATH) se não instalado)
 RECLAMES= -lraylib
@@ -33,6 +33,9 @@ debug: $(OBJS)
 
 main.o:
 	$(CC) -c main.c -o main.o
+
+Personagem.o:
+	$(CC) -c Personagem.c -o Personagem.o
 
 # REMOÇÃO DO RESULTADO DA COMPILAÇÃO
 

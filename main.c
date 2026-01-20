@@ -6,29 +6,7 @@
 //#include <pthreads.h>
 
 #include <raylib.h>
-
-void lerTecladoMovimentoCubo( Vector3* posicaoCubo )
-{
-    if (IsKeyPressed( KEY_W ))
-    {
-      posicaoCubo->x += 0.5f;
-    }
-      
-    if (IsKeyPressed( KEY_S ))
-    {
-      posicaoCubo->x -= 0.5f ;
-    }
-      
-    if (IsKeyPressed( KEY_D ))
-    {
-      posicaoCubo->z += 0.5f ;
-    }
-      
-    if (IsKeyPressed( KEY_A ))
-    {
-      posicaoCubo->z -= 0.5f ;
-    }
-}
+#include "Personagem.h"
 
 void tratarEncerramentoComESC()
 {
@@ -55,7 +33,7 @@ int main(int argc, char *argv[])
   camera.fovy = 45.0f;
   camera.projection = CAMERA_PERSPECTIVE;
 
-  Vector3 posicaoCubo = { 0.0f, 0.0f, 0.0f };
+  PersonagemCubico* personagem = personagemCubico_construtor( 0, 1.0f, 1.0f,1.0f,1.0f, 0.0f,0.0f,0.0f );
 
   InitWindow( larguraTela, alturaTela, "raylib demo" );
   SetTargetFPS(30);
@@ -66,10 +44,10 @@ int main(int argc, char *argv[])
 
     BeginDrawing();
     ClearBackground( BLACK );
-    lerTecladoMovimentoCubo( &posicaoCubo );
 
     BeginMode3D(camera);
-    DrawCube( posicaoCubo, 2.0f, 2.0f, 2.0f, BLUE );
+    DrawCube( *personagem->posicao, personagem->altura, personagem->largura, personagem->comprimento, BLUE );
+    personagem->mover( personagem->posicao, &personagem->incremento );
     DrawGrid( 10, 1.0f );
     EndMode3D();
 
@@ -78,6 +56,8 @@ int main(int argc, char *argv[])
     EndDrawing();
   }
 
+  
+  personagemCubico_destrutor( personagem );
   CloseWindow();
   exit(0);
 }
