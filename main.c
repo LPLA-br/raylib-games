@@ -7,6 +7,7 @@
 
 #include <raylib.h>
 #include "Personagem.h"
+#include "Camera.h"
 
 void tratarEncerramentoComESC()
 {
@@ -25,14 +26,7 @@ int main(int argc, char *argv[])
 
   uint8_t flag = 0;
 
-  Camera3D camera = { 0 };
-
-  camera.position = (Vector3){ 10.0f, 10.0f, 10.0f };
-  camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
-  camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };
-  camera.fovy = 45.0f;
-  camera.projection = CAMERA_PERSPECTIVE;
-
+  Camera3D* camera = camera_construtor( 0, 1.0f, 10.0f,10.0f,10.0f, 0.0f,0.0f,0.0f, 0.0f,1.0f,0.0f, 45.0f, CAMERA_PERSPECTIVE );
   PersonagemCubico* personagem = personagemCubico_construtor( 0, 1.0f, 1.0f,1.0f,1.0f, 0.0f,0.0f,0.0f );
 
   InitWindow( larguraTela, alturaTela, "raylib demo" );
@@ -45,7 +39,7 @@ int main(int argc, char *argv[])
     BeginDrawing();
     ClearBackground( BLACK );
 
-    BeginMode3D(camera);
+    BeginMode3D(*camera);
     DrawCube( *personagem->posicao, personagem->altura, personagem->largura, personagem->comprimento, BLUE );
     personagem->mover( personagem->posicao, &personagem->incremento );
     DrawGrid( 10, 1.0f );
@@ -55,9 +49,9 @@ int main(int argc, char *argv[])
 
     EndDrawing();
   }
-
   
   personagemCubico_destrutor( personagem );
+  camera_destrutor( camera );
   CloseWindow();
   exit(0);
 }

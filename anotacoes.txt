@@ -1,0 +1,39 @@
+DOCUMENTO COM OBSERVAÇÕES
+
+OBJETOS REPRESENTADOS POR ESTRUTURAS
+  Parciais
+    Possuem estruturas que descrevem o objeto parcialmente
+      Exemplo: cubo com Vector3 para posição
+  Completas
+    Possuem todas informações necessárias para existir por
+    si proprio.
+      Exemplo: Estrutura Camera3D
+
+PADRONIZAÇÃO DE EXTENÇÃO DE ESTRUTURAS
+  typedef struct {
+    SUPERCONJUNTO_VARIAVEIS_MEMBRO;
+    SUBESTRUTURA;
+    PONTEIROS_PARA_FUNÇÕES_MEMBRO;
+  } Exemplo;
+
+NORMALIZAÇÃO OOP
+  Abstração (categorias)
+    Orientantes: Responsabilidade única
+    Animados (se movem)
+      Objetos
+        Personagens
+    Inanimados (não se movem)
+      Física
+  Encapsulamento - responsabilidade do programador
+    Orientantes: Demeter law, (Tell, Don't ask)
+  Herança || Composição
+    Inserção de ponteiro para subestrutura
+      Orientantes: Substituição de Liskov, Open Closed
+  Polimorfismo
+    Ponteiro para função, estrutura, variável ...
+
+
+SEGURANÇA DE MEMÓRIA
+I. funções membro de construção e destruição.
+      malloc() -> memset() e free()
+

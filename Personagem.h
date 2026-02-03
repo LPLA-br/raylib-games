@@ -2,6 +2,7 @@
 #define PERSONAGEM_H_INCLUDED
 
 #include <raylib.h>
+#include <stdint.h>
 
 /* LPLA-br
   Estrutura de dados para
@@ -18,7 +19,7 @@ typedef struct
 {
   uint8_t id;
   float incremento;
-  Vector3* posicao;
+  Vector3* posicao; //extende Vector3
 
   float altura;
   float largura;
@@ -29,9 +30,9 @@ typedef struct
 } PersonagemCubico;
 
 PersonagemCubico* personagemCubico_construtor(
-    uint8_t id, float incremento,
-    float altura, float largura, float comprimento,
-    float x, float y, float z
+      uint8_t id, float incremento,
+      float altura, float largura, float comprimento,
+      float x, float y, float z
     );
 
 void personagemCubico_destrutor( PersonagemCubico* personagemCubico );

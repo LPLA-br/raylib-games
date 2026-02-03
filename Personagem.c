@@ -6,9 +6,9 @@
 #include "Personagem.h"
 
 PersonagemCubico* personagemCubico_construtor(
-    uint8_t id, float incremento,
-    float altura, float largura, float comprimento,
-    float x, float y , float z
+      uint8_t id, float incremento,
+      float altura, float largura, float comprimento,
+      float x, float y , float z
     )
 {
   PersonagemCubico* inst = malloc( sizeof(PersonagemCubico) );
