@@ -19,6 +19,9 @@ OBJS= main.o Personagem.o Camera.o
 # LIGAÇÃO PARA raylib (adiciona (-L PATH) se não instalado)
 RECLAMES= -lraylib
 
+# FLAGS EXTRAS PARA CAPTURA DE PROBLEMAS EM DEBUG
+EXTRA= -Wall -Wextra -Wpedantic -fsanitize=address,undefined
+
 #COMPILAÇÃO FINAL
 
 all: $(OBJS)
@@ -27,7 +30,7 @@ all: $(OBJS)
 #COMPILAÇÃO PARA DEBUG ASSEMBLY COM O GDB (gnu debugger)
 
 debug: $(OBJS)
-	$(CC) $(CC_DFLAG) $(SRCS) -o $(PROJ_NAME).gdb $(RECLAMES) $(CC_FLAGS) 
+	$(CC) $(CC_DFLAG) $(EXTRA) $(SRCS) -o $(PROJ_NAME).gdb $(RECLAMES) $(CC_FLAGS) 
 
 #COMPILAÇÃO DOS OBJETOS
 
